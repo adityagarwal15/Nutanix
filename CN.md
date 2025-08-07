@@ -1,0 +1,400 @@
+# Computer Networks - Campus Placement Study Guide
+
+## 🚀 Last-Minute Revision (30 minutes before interview)
+
+### ⭐ Must-Know Concepts
+- **OSI Model**: Physical → Data Link → Network → Transport → Session → Presentation → Application
+- **TCP vs UDP**: TCP = Reliable/Slow, UDP = Fast/Unreliable
+- **IP Classes**: A(1-126), B(128-191), C(192-223)
+- **Private IPs**: 10.x.x.x, 172.16-31.x.x, 192.168.x.x
+- **Common Ports**: HTTP(80), HTTPS(443), FTP(21), SSH(22), DNS(53)
+- **3-Way Handshake**: SYN → SYN-ACK → ACK
+
+### ⭐ Top 5 Interview Questions (Know These Cold!)
+1. **TCP vs UDP difference?** → Connection-oriented vs Connectionless, Reliable vs Fast
+2. **What happens when you type google.com?** → DNS lookup → TCP handshake → HTTP request → Response → Render
+3. **OSI Model layers?** → Use mnemonic: "Please Do Not Throw Sausage Pizza Away"
+4. **IP vs MAC address?** → IP = Logical/Layer 3, MAC = Physical/Layer 2
+5. **Subnetting purpose?** → Security, Performance, Better address management
+
+### ⭐ Quick Formulas
+- **Subnetting**: Usable hosts = 2^(32 - subnet bits) - 2
+- **Example**: /26 network = 2^6 - 2 = 62 hosts
+
+### ⭐ Device Functions (One-liner each)
+- **Hub**: Broadcasts to all (Layer 1)
+- **Switch**: MAC-based forwarding (Layer 2)  
+- **Router**: IP-based routing between networks (Layer 3)
+
+---
+
+## 1. OSI Model & TCP/IP Model
+
+### OSI 7-Layer Model
+1. **Physical Layer** - Bits transmission, cables, signals, electrical signals
+2. **Data Link Layer** - Frame transmission, MAC addresses, switches
+3. **Network Layer** - Routing, IP addresses, routers, packets
+4. **Transport Layer** - TCP/UDP, port numbers, reliability, segments
+5. **Session Layer** - Session management, connections, establish/manage sessions
+6. **Presentation Layer** - Encryption, compression, data format
+7. **Application Layer** - HTTP, FTP, SMTP, DNS, user interface
+
+**Mnemonic**: "Please Do Not Throw Sausage Pizza Away"
+
+### TCP/IP 4-Layer Model
+1. **Network Access Layer** (Physical + Data Link) - Link Layer
+2. **Internet Layer** (Network) - IP, ICMP, ARP
+3. **Transport Layer** - TCP, UDP
+4. **Application Layer** (Session + Presentation + Application)
+
+**Key Difference**: OSI is conceptual/theoretical, TCP/IP is practical and used in real-world networks
+
+### Associated Protocols by Layer
+| Layer | Common Protocols |
+|-------|------------------|
+| Application | HTTP, FTP, SMTP, DNS |
+| Presentation | SSL/TLS, JPEG, MPEG |
+| Session | NetBIOS, RPC, PPTP |
+| Transport | TCP, UDP |
+| Network | IP, ICMP, BGP, OSPF |
+| Data Link | Ethernet, PPP, ARP |
+| Physical | Ethernet, DSL, Wi-Fi standards |
+
+## 2. IP Addressing & Subnetting
+
+### IPv4 Structure
+- 32-bit address (4 octets)
+- Classes: A (1-126), B (128-191), C (192-223)
+- **Public vs Private IPs**:
+  - Public: Used to communicate over the internet
+  - Private: Used within LANs
+- Private IP ranges:
+  - Class A: 10.0.0.0/8
+  - Class B: 172.16.0.0/12
+  - Class C: 192.168.0.0/16
+
+### Key Differences: IP vs MAC Address
+| IP Address | MAC Address |
+|------------|-------------|
+| Logical address (Layer 3) | Physical address (Layer 2) |
+| Can change depending on network | Fixed for a device |
+| Used for routing | Used for local network delivery |
+| 32-bit (IPv4) or 128-bit (IPv6) | 48-bit address |
+
+### Subnetting Basics
+- **Purpose**: Dividing a network for security, performance, and better address management
+- **Benefits**:
+  - Improves network performance by reducing broadcast domains
+  - Enhances security by isolating groups
+  - Conserves IP addresses by allocating specific subnets
+- **Subnet Mask**: Determines network vs host portion
+- **CIDR Notation**: 192.168.1.0/24 means 24 network bits
+- **Host Calculation**: Number of usable hosts = 2^(32 - subnet mask bits) - 2
+  - Example: /26 subnet = 2^6 - 2 = 62 usable hosts
+- **Subnetting Formula**: 2^n subnets, 2^h-2 hosts per subnet
+
+### IPv6
+- 128-bit address, 8 groups of 4 hexadecimal digits
+- Solves IPv4 exhaustion problem
+- No need for NAT
+
+### ARP (Address Resolution Protocol)
+- Resolves an IP address to a MAC address
+- Works at Layer 2, essential for local delivery
+
+## 3. Transport Layer Protocols
+
+### TCP (Transmission Control Protocol)
+- **Connection-oriented**, reliable
+- **Flow control**, congestion control
+- **Three-way handshake**: SYN → SYN-ACK → ACK
+- **Four-way termination**: FIN → ACK → FIN → ACK
+- Used by: HTTP, HTTPS, FTP, SMTP
+
+### UDP (User Datagram Protocol)
+- **Connectionless**, unreliable but fast
+- No flow control, minimal overhead
+- Used by: DNS, DHCP, streaming, gaming
+
+### Key Differences
+| TCP | UDP |
+|-----|-----|
+| Reliable | Unreliable |
+| Connection-oriented | Connectionless |
+| Slower | Faster |
+| Ordered delivery | No ordering |
+| Error checking | Basic error checking |
+
+## 4. Application Layer Protocols
+
+### HTTP/HTTPS
+- **HTTP**: Port 80, stateless, request-response
+- **HTTPS**: Port 443, encrypted with TLS/SSL
+- **Methods**: GET, POST, PUT, DELETE, PATCH
+- **Status codes**: 2xx (Success), 3xx (Redirect), 4xx (Client Error), 5xx (Server Error)
+
+### DNS (Domain Name System)
+- Port 53, translates domain names to IP addresses
+- **Hierarchy**: Root → TLD → Authoritative servers
+- **Record types**: 
+  - **A Record**: Maps domain to IPv4
+  - **AAAA Record**: Maps domain to IPv6  
+  - **CNAME Record**: Alias from one domain to another
+  - **MX Record**: Mail exchange server
+  - **NS Record**: Name server
+- Uses both TCP and UDP
+- **DNS Caching**: Stores query results locally for specified TTL, improves performance
+
+### FTP (File Transfer Protocol)
+- Port 21 (control), Port 20 (data)
+- Two modes: Active and Passive
+
+### SMTP/POP3/IMAP
+- **SMTP**: Port 25/587, sending emails
+- **POP3**: Port 110, downloading emails
+- **IMAP**: Port 143, accessing emails on server
+
+## 5. Network Devices
+
+### Hub
+- Physical layer device, single collision domain
+- Broadcasts to all ports, half-duplex
+
+### Switch
+- Data link layer device, multiple collision domains
+- Learns MAC addresses, full-duplex
+- Creates switching table for efficient forwarding
+
+### Router
+- Network layer device, connects different networks
+- Routes packets based on IP addresses
+- Maintains routing table
+
+### Gateway
+- Connects networks using different protocols
+- Can operate at any layer
+- **Role in network**: Acts as entry/exit point between different networks
+
+## 7. Important Network Concepts
+
+### NAT (Network Address Translation)
+- **Purpose**: Allows multiple devices to share a single public IP
+- Converts private (LAN) IPs to public (Internet) IPs
+- **Types**: 
+  - **Static NAT**: One-to-one mapping (single private IP to single public IP)
+  - **Dynamic NAT**: Pool of public IPs assigned dynamically
+  - **PAT (Port Address Translation)**: Many-to-one with different ports
+- **Security Benefit**: Hides internal IP structure from external networks
+
+### Packet Switching
+- Data broken into packets
+- Packets sent over different routes
+- Reassembled at destination
+- More efficient than circuit switching
+
+### Proxy Server
+- Intermediary between client and server
+- Can filter or cache content
+- Provides anonymity and security
+
+## 6. Routing Algorithms
+
+### Distance Vector
+- **RIP**: Uses hop count, max 15 hops
+- Shares routing table with neighbors
+- Count-to-infinity problem
+
+### Link State
+- **OSPF**: Uses bandwidth as metric
+- Each router has complete network topology
+- Faster convergence than distance vector
+
+### Path Vector
+- **BGP**: Used between autonomous systems
+- Maintains path information to prevent loops
+
+## 7. Network Security Basics
+
+### Common Attacks
+- **DoS/DDoS**: Overwhelming server with requests
+- **Man-in-the-Middle**: Intercepting communication
+- **Phishing**: Fake websites/emails
+- **SQL Injection**: Database attacks
+- **Cross-Site Scripting (XSS)**: Web application attacks
+
+### Security Measures
+- **Firewalls**: Filter network traffic based on security rules
+  - **Stateless**: Examine each packet individually
+  - **Stateful**: Track connection state, allow packets from established connections
+- **VPN**: Secure tunnel over public network
+- **SSL/TLS**: Encryption for web traffic
+- **Authentication**: Username/password, certificates
+- **DMZ (Demilitarized Zone)**: Network segment between internal network and internet, hosts public-facing services
+
+## 8. Network Topologies
+
+- **Bus**: Single backbone cable, all nodes connected to it
+- **Star**: Central hub/switch, most common for LAN, easy to manage
+- **Ring**: Each node connected to two others, data travels in circle
+- **Mesh**: Every node connected to every other node, high redundancy
+- **Tree**: Hierarchical structure
+- **Hybrid**: Combination of above topologies
+
+## 9. Network Types
+
+- **PAN (Personal Area Network)**: Very small range (Bluetooth, personal devices)
+- **LAN (Local Area Network)**: Small, localized (office, building)
+- **MAN (Metropolitan Area Network)**: City-sized area
+- **WAN (Wide Area Network)**: Country/worldwide (Internet)
+
+## 9. Error Detection & Correction
+
+### Error Detection
+- **Parity bit**: Simple odd/even parity
+- **Checksum**: Sum of data segments
+- **CRC (Cyclic Redundancy Check)**: Polynomial division method, used at Data Link layer
+
+### Error Correction
+- **Hamming code**: Can correct single-bit errors
+- **Reed-Solomon**: Used in CDs, DVDs
+
+## 10. Flow Control & Congestion Control
+
+### Flow Control Protocols
+- **Stop-and-Wait**: Send one frame, wait for ACK (inefficient)
+- **Sliding Window Protocol**: Send multiple frames before needing ACK (more efficient)
+  - **Go-Back-N**: If frame lost, retransmit that frame and all subsequent frames
+  - **Selective Repeat**: Only retransmit lost or damaged frames
+
+### Congestion Control (TCP)
+- **Slow Start**: Exponential increase
+- **Congestion Avoidance**: Linear increase
+- **Fast Retransmit**: Duplicate ACKs trigger retransmission
+- **Fast Recovery**: Avoid slow start after fast retransmit
+
+## Common Interview Questions & Answers
+
+### Q1: What happens when you type www.google.com in browser?
+1. **DNS lookup** to get IP address (Browser cache → OS cache → DNS resolver → Root/TLD/Authoritative servers)
+2. **TCP connection establishment** (3-way handshake)
+3. **HTTP request** sent to server
+4. **Server processes** and sends HTTP response
+5. **Browser renders** the page
+6. **TCP connection termination**
+
+### Q2: Difference between TCP and UDP?
+- Reliability, connection state, speed, use cases
+
+### Q3: What is NAT and its purpose?
+Network Address Translation - allows multiple devices to share a public IP, solves IPv4 shortage
+
+### Q4: What is DHCP?
+Dynamic Host Configuration Protocol - automatically assigns IP addresses to devices
+
+### Q5: Explain 3-way handshake
+1. Client sends SYN
+2. Server responds with SYN-ACK
+3. Client sends ACK
+Connection established!
+
+### Q6: What is the difference between IP and MAC address?
+- **IP Address**: Logical address (Layer 3), can change depending on network, used for routing
+- **MAC Address**: Physical address (Layer 2), fixed for device, used for local network delivery
+
+### Q7: How does DNS work?
+1. Browser checks cache
+2. OS checks cache
+3. OS asks DNS resolver
+4. Resolver queries Root servers → TLD servers → Authoritative servers
+5. IP address returned and cached
+
+### Q8: What is subnetting and why is it used?
+Dividing a large network into smaller sub-networks for security, performance, and better address management
+
+### Q9: What is ARP?
+Address Resolution Protocol - resolves IP address to MAC address for local delivery
+
+### Q10: Difference between Hub, Switch, and Router?
+- **Hub (Layer 1)**: Broadcasts data to all devices, single collision domain, half-duplex
+- **Switch (Layer 2)**: Sends data only to intended device using MAC addresses, multiple collision domains
+- **Router (Layer 3)**: Connects different networks, forwards packets using IP addresses
+
+### Q11: Explain OSI vs TCP/IP models
+- **OSI**: 7 layers, conceptual/theoretical model, protocol-independent
+- **TCP/IP**: 4 layers, practical model used in real networks, Internet is based on this
+
+### Q13: What is a VLAN and why is it used?
+**VLAN (Virtual Local Area Network)** is a logical grouping of devices on different physical LANs into a single broadcast domain. Benefits:
+- Improves network management and security by isolating sensitive data
+- Reduces broadcast traffic and congestion
+- Enables segmentation based on function, department, or project
+
+### Q14: How does VLAN tagging work?
+VLAN tagging (IEEE 802.1Q standard) adds a 4-byte tag to Ethernet frames to indicate VLAN membership, allowing switches to route frames to the correct VLAN.
+
+### Q15: Difference between access and trunk ports?
+- **Access ports**: Carry traffic for single VLAN, connect end devices
+- **Trunk ports**: Carry traffic for multiple VLANs between switches
+
+### Q16: Static vs Dynamic routing?
+- **Static routing**: Manually configured routes, doesn't adapt to network changes
+- **Dynamic routing**: Automatically adjusts routes using protocols (OSPF, RIP, BGP)
+
+### Q17: What are the types of NAT?
+- **Static NAT**: Single private IP to single public IP permanently
+- **Dynamic NAT**: Private IP to public IP from pool dynamically  
+- **PAT**: Multiple devices share single public IP using unique ports
+
+### Q18: Stateful vs Stateless firewall?
+- **Stateless**: Examines each packet individually based on rules
+- **Stateful**: Tracks connection state, allows packets from established connections
+
+### Q19: What is DMZ in network security?
+**DMZ (Demilitarized Zone)** is a network segment between internal network and internet that hosts public-facing services, isolating them from internal network
+
+## Quick Revision Points
+
+### ⭐ Core Concepts (High Priority)
+- **Remember port numbers**: HTTP(80), HTTPS(443), FTP(21), SSH(22), DNS(53), SMTP(25)
+- **OSI vs TCP/IP**: OSI = 7 layers (conceptual), TCP/IP = 4 layers (practical)
+- **Subnetting**: Practice CIDR calculations
+- **TCP features**: Reliable, ordered, connection-oriented, flow control
+- **Network devices**: Hub(Physical), Switch(Data Link), Router(Network)
+- **IPv4 classes**: A(1-126), B(128-191), C(192-223)
+- **Private IP ranges**: 10.x.x.x, 172.16-31.x.x, 192.168.x.x
+
+### 📋 Extended Concepts (Medium Priority)
+- **NAT types**: Static, Dynamic, PAT
+- **DNS records**: A, AAAA, CNAME, MX
+- **Routing**: Static vs Dynamic
+- **VLANs**: Logical network segmentation
+- **Firewalls**: Stateful vs Stateless
+- **Error detection**: Parity, Checksum, CRC
+
+## Pro Tips for Interviews
+
+1. **Draw diagrams** when explaining concepts
+2. **Give real-world examples** (e.g., "TCP is like registered mail, UDP is like regular mail")
+3. **Use analogies** - postal system for TCP/IP, phonebook for DNS
+4. **Understand the 'why'** behind protocols and decisions
+5. **Practice subnetting problems** - they're commonly asked
+6. **Know current trends**: IPv6, HTTP/2, HTTP/3, WebRTC
+7. **Focus on "What happens behind the scenes"** when loading a webpage
+8. **Practice explaining out loud** - not just reading definitions
+
+## Tools to Practice (Bonus)
+
+- **Cisco Packet Tracer**: Network simulation
+- **Wireshark**: Packet analysis
+- **Nmap**: Network scanning  
+- **Command-line tools**: netstat, ipconfig, ifconfig, ping, traceroute
+
+## Additional Terminology
+
+- **Latency**: Time delay in data transmission
+- **Bandwidth**: Maximum data transfer capacity
+- **Jitter**: Variation in packet arrival time
+- **Packet Loss**: Percentage of packets that fail to reach destination
+
+---
+*Good luck with your placements! Focus on understanding concepts rather than memorizing - interviewers can tell the difference.*
