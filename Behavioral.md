@@ -7,10 +7,11 @@ For Nutanix SRE intern interviews, behavioral questions primarily focus on under
 ### Personal & Motivation Questions
 
 **Tell me about yourself.**
-- Prepare a concise summary highlighting your background, interests, and motivation for SRE.
+- Prepare a concise summary highlighting your background, interests, and motivation for SRE. -- introduce, 3 fav subjects, no dsa, no technical, no internship
 
 **Why do you want to work as an SRE instead of development?**
 - Explain your interest in system reliability, troubleshooting, customer-centric roles, and passion for maintaining stable systems.
+- I never really liked dev, i was much of codning, when you communicate with someone far across countries via vable under the ocean bed, apart from this i love troubleshooting 
 
 **Why Nutanix? What attracts you to this company?**
 - Show your knowledge about Nutanix's culture, technology (e.g., hyperconverged infrastructure), and values.
