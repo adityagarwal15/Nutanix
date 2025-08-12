@@ -35,6 +35,9 @@ This is where data lives permanently. The type of storage is one of the biggest 
 | **Analogy** | Like finding a book in a massive library by looking through the card catalog. | Like searching for a word in a digital document (Ctrl+F). |
 | **Use Case** | Cheap, high-capacity storage for backups or data that isn't accessed often (cold storage). | Operating systems, databases, applications—anything that needs fast access. |
 
+<img width="1153" height="688" alt="image" src="https://github.com/user-attachments/assets/3a12c953-9fb6-4479-945b-84b031baee27" />
+
+
 ### Types of SSDs
 
 | Type | Simple Explanation | Why an SRE Cares |
@@ -76,3 +79,4 @@ These concepts are about preventing a single hardware failure from causing downt
 | **"A database query is very slow, but top shows the CPU is not busy."** | This points to a storage bottleneck. The CPU is waiting for data from the disk. Check `iostat` for high %iowait. Check disk health with `smartctl -a /dev/sda`. The underlying storage might be a slow HDD, or the RAID array could be in a degraded state. |
 | **"The whole system freezes for seconds at a time, and top shows high 'kswapd' activity."** | This is a classic out-of-memory scenario. The system has exhausted its physical RAM and is heavily using the slow disk for swap space. The solution is to add more RAM or reduce the application's memory footprint. |
 | **"Copying a large file between two servers is much slower than expected."** | This is a network bottleneck. Check the NIC speed on both servers (`ethtool eth0`). They might be connected at 1GbE instead of 10GbE. Also, check the switch they are connected to for errors. |
+
